@@ -1,0 +1,120 @@
+* {
+  font-family: $fontePadrao;
+  letter-spacing: 0;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $fontePadrao;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+*,
+*:after,
+*::before {
+  @include box-sizing(border-box);
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, textarea, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 14px;
+  vertical-align: baseline;
+  line-height: 1.5em;
+}
+
+body {
+  height: inherit;
+  background: $corBackground;
+}
+
+h1, .h1 {
+  font-size: 1.75em;
+
+  @media screen and (max-width: $screen-desktop) {
+    font-size: 1.5em;
+  }
+}
+
+h2, .h2 {
+  font-size: 1.5em;
+
+  @media screen and (max-width: $screen-desktop) {
+    font-size: 1.33em;
+  }
+}
+
+h3, .h3 {
+  font-size: 1.33em;
+
+  @media screen and (max-width: $screen-desktop) {
+    font-size: 1em;
+  }
+}
+
+h4, .h4 {
+  font-size: 1em;
+
+  @media screen and (max-width: $screen-desktop) {
+    font-size: .87em;
+  }
+}
+
+h5, .h5 {
+  font-size: .87em;
+
+  @media screen and (max-width: $screen-desktop) {
+    font-size: .75em;
+  }
+}
+
+h6, .h6 {
+  font-size: .75em;
+
+  @media screen and (max-width: $screen-desktop) {
+    font-size: .67em;
+  }
+}
+
+a {
+  line-height: inherit;
+
+  img {
+    border: 0 none;
+  }
+}
+
+span {
+  line-height: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+button {
+  font-weight: 400;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+input[placeholder], [placeholder], *[placeholder] {
+  @include placeholder($corCinzaMuitoClaro);
+}

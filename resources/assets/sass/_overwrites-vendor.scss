@@ -1,0 +1,61 @@
+/*
+ * Bootstrap
+ */
+
+input.form-control {
+  border-color: $corAmarelo;
+
+  &:focus {
+    background: $corAmarelo;
+    border-color: $corPreto;
+    box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.navbar {
+  &.navbar-inverse {
+    background: $corCinzaEscuro;
+    min-height: 80px;
+    margin-bottom: 0;
+    border-bottom: 0;
+
+    .navbar-brand {
+      height: 80px;
+      width: 80px;
+      padding: 18px 15px;
+      background: $corAmarelo;
+      right: 0;
+      left: 0;
+
+      img {
+        margin: auto;
+      }
+    }
+
+    .link-logout {
+      font-size: 1.5em;
+      height: 80px;
+      padding: 28px 15px;
+    }
+  }
+
+  &.navbar-secundaria {
+    position: fixed;
+    top: 80px;
+    height: 50px;
+    margin-bottom: 0;
+    border-bottom: 0;
+    background: $corAmarelo;
+    right: 0;
+    left: 0;
+  }
+}
+
+.btn {
+  border-radius: 3px;
+  outline: none !important;
+}
+
+.btn.btn-primary {
+  @include button-variant($corBranco, $corCinzaEscuro, $corPreto);
+}

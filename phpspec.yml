@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Zeige
+        psr4_prefix: Zeige
+        src_path: app
