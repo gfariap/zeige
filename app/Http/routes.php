@@ -17,11 +17,20 @@ Route::get('/', [
     }
 ]);
 
-Route::get('login', [ 'as' => 'login', 'uses' => 'PaginasController@login', 'middleware' => 'guest' ]);
-Route::post('login', [ 'as' => 'logar', 'uses' => 'PaginasController@logar', 'middleware' => 'guest' ]);
-Route::get('logout', [ 'as' => 'logout', 'uses' => 'PaginasController@logout', 'middleware' => 'auth' ]);
-Route::get('projetos', [ 'as' => 'projetos.listar', 'uses' => 'ProjetosController@listar', 'middleware' => 'auth' ]);
-Route::get('projetos/{id}',
-    [ 'as' => 'projetos.dashboard', 'uses' => 'ProjetosController@dashboard', 'middleware' => 'auth' ]);
-Route::get('projetos/{projeto_id}/telas/{id}',
-    [ 'as' => 'projetos.tela', 'uses' => 'ProjetosController@tela', 'middleware' => 'auth' ]);
+Route::group([ 'middleware' => 'guest' ], function () {
+    Route::get('login', [ 'as' => 'login', 'uses' => 'PaginasController@login' ]);
+    Route::post('login', [ 'as' => 'logar', 'uses' => 'PaginasController@logar' ]);
+});
+
+Route::group([ 'middleware' => 'auth' ], function () {
+    Route::get('logout', [ 'as' => 'logout', 'uses' => 'PaginasController@logout' ]);
+
+    Route::group([ 'prefix' => 'projetos', 'as' => 'projetos.' ], function () {
+        Route::get('/', [ 'as' => 'listar', 'uses' => 'ProjetosController@listar' ]);
+        Route::get('incluir', [ 'as' => 'incluir', 'uses' => 'ProjetosController@incluir' ]);
+        Route::get('{id}/editar', [ 'as' => 'editar', 'uses' => 'ProjetosController@editar' ]);
+        Route::get('{id}', [ 'as' => 'dashboard', 'uses' => 'ProjetosController@dashboard' ]);
+        Route::get('{projeto_id}/telas/{id}', [ 'as' => 'tela', 'uses' => 'ProjetosController@tela' ]);
+    });
+
+});

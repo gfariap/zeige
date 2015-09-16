@@ -39,7 +39,10 @@
         @if (Auth::user())
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="link-logout" href="{{ route('logout') }}">Logout</a></li>
+                    <li>
+                        <span class="hidden-xs username">{{ Auth::user()->displayname }}</span>
+                        <a class="link-logout" href="{{ route('logout') }}">Logout</a>
+                    </li>
                 </ul>
             </div>
         @endif
@@ -48,17 +51,23 @@
 
 <nav class="navbar navbar-secundaria">
     <div class="container">
-
+        <div class="navbar-right">
+            @yield ('acoes')
+        </div>
     </div>
 </nav>
 
 @yield ('modals')
 
-<div class="container">
-    <div class="content">
+<div class="conteudo">
+    <div class="container">
         @include ('componentes.erros')
         @yield ('content')
     </div>
+</div>
+
+<div class="rodape">
+    <div class="rodape-interno"></div>
 </div>
 
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>

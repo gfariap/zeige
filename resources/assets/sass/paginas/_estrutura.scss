@@ -1,0 +1,27 @@
+.conteudo {
+  position: fixed;
+  top: 130px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+.rodape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: $corAmarelo;
+
+  .rodape-interno {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: $corCinzaEscuro;
+  }
+}

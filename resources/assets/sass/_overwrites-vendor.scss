@@ -13,6 +13,8 @@ input.form-control {
 }
 
 .navbar {
+  border: 0;
+
   &.navbar-inverse {
     background: $corCinzaEscuro;
     min-height: 80px;
@@ -26,16 +28,47 @@ input.form-control {
       background: $corAmarelo;
       right: 0;
       left: 0;
+      margin-left: 0 !important;
 
       img {
         margin: auto;
       }
     }
 
-    .link-logout {
+    .navbar-toggle {
+      margin: 15px 15px 15px 0;
+      padding: 13px;
+      @include button-variant($corBranco, $corCinzaEscuro, $corBranco);
+
+      .icon-bar {
+        height: 3px;
+      }
+
+      .icon-bar + .icon-bar {
+        margin-top: 6px;
+      }
+    }
+
+    .navbar-right {
+      margin-right: 0 !important;
+    }
+
+    .username {
+      color: $corBranco;
+      padding: 17px 15px 5px;
       font-size: 1.5em;
-      height: 80px;
-      padding: 28px 15px;
+      display: block;
+    }
+
+    .link-logout {
+      font-size: 1.25em;
+      padding: 10px 15px;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 1.25em;
+        padding: 0 15px 15px;
+        text-align: right;
+      }
     }
   }
 
@@ -48,6 +81,10 @@ input.form-control {
     background: $corAmarelo;
     right: 0;
     left: 0;
+
+    .navbar-right {
+      margin-right: 0 !important;
+    }
   }
 }
 
