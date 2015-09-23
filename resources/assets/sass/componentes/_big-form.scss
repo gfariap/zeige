@@ -1,0 +1,22 @@
+.big-form {
+  margin-top: 50px;
+
+  label {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  input.form-control {
+    height: 54px;
+    font-size: 20px;
+  }
+
+  .big-textarea {
+    height: 300px;
+    font-size: 20px;
+  }
+
+  .btn {
+    font-size: 24px;
+  }
+}

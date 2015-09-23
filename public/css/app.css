@@ -6118,9 +6118,9 @@ hr {
 /*
  * Bootstrap
  */
-input.form-control {
+input.form-control, textarea.form-control {
   border-color: #fec70e; }
-  input.form-control:focus {
+  input.form-control:focus, textarea.form-control:focus {
     background: #fec70e;
     border-color: black;
     box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.6); }
@@ -6364,6 +6364,13 @@ input.form-control {
     color: black;
     background-color: white; }
 
+@media screen and (min-width: 768px) {
+  .form-com-divisoria .esquerda {
+    padding-right: 50px;
+    border-right: 1px solid #cccccc; }
+  .form-com-divisoria .direita {
+    padding-left: 50px; } }
+
 /**
  * Páginas
  */
@@ -6406,5 +6413,18 @@ input.form-control {
 /**
  * Componentes
  */
+.big-form {
+  margin-top: 50px; }
+  .big-form label {
+    font-size: 20px;
+    margin-bottom: 5px; }
+  .big-form input.form-control {
+    height: 54px;
+    font-size: 20px; }
+  .big-form .big-textarea {
+    height: 300px;
+    font-size: 20px; }
+  .big-form .btn {
+    font-size: 24px; }
 
 /*# sourceMappingURL=app.css.map */

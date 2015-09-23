@@ -11,3 +11,16 @@
   padding: 6px 15px;
   @include button-variant($corBranco, $corPreto, $corPreto);
 }
+
+.form-com-divisoria {
+  @media screen and (min-width: $screen-sm-min) {
+    .esquerda {
+      padding-right: 50px;
+      border-right: 1px solid $corCinzaMuitoClaro;
+    }
+
+    .direita {
+      padding-left: 50px;
+    }
+  }
+}

@@ -2,7 +2,7 @@
  * Bootstrap
  */
 
-input.form-control {
+input.form-control, textarea.form-control {
   border-color: $corAmarelo;
 
   &:focus {
