@@ -1,0 +1,66 @@
+.card-projeto {
+  height: 185px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: 0 0 10px $corCinzaClaro;
+  }
+
+  .imagem {
+    width: 100%;
+    height: 150px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      right: 45px;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      max-height: 140px;
+      max-width: 200px;
+    }
+
+    .acoes {
+      float: right;
+      height: 150px;
+      width: 45px;
+      background: $corAmarelo;
+      padding: 10px 0;
+
+      a {
+        margin: 12px 0;
+        display: block;
+        outline: none !important;
+        text-decoration: none !important;
+
+        [class^="icone-"], [class*="icone-"] {
+          color: $corPreto;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
+  .nome {
+    height: 35px;
+    background: $corPreto;
+    color: $corBranco;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 1.7;
+    margin-top: -6px;
+    padding: 0 5px;
+    overflow: hidden;
+  }
+}
+
+.cards {
+  margin: 30px -15px 40px;
+}

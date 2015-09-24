@@ -4,7 +4,8 @@
     <h1 class="titulo">CADASTRO DE PROJETO</h1>
     <hr/>
 
-    <form action="" class="big-form form-com-divisoria">
+    <form action="{{ route('projetos.adicionar') }}" method="POST" class="big-form form-com-divisoria" accept-charset="UTF-8" enctype="multipart/form-data">
+        {!! csrf_field() !!}
         <div class="row">
             <div class="col-sm-6 col-md-offset-1 col-md-5 esquerda">
                 <div class="form-group">
@@ -30,7 +31,7 @@
                     <textarea class="form-control big-textarea" name="descricao" id="descricao"></textarea>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block">
+                    <button type="submit" class="btn btn-primary btn-block">
                         CADASTRAR PROJETO
                     </button>
                 </div>

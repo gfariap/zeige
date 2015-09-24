@@ -28,7 +28,9 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::group([ 'prefix' => 'projetos', 'as' => 'projetos.' ], function () {
         Route::get('/', [ 'as' => 'listar', 'uses' => 'ProjetosController@listar' ]);
         Route::get('incluir', [ 'as' => 'incluir', 'uses' => 'ProjetosController@incluir' ]);
+        Route::post('/', [ 'as' => 'adicionar', 'uses' => 'ProjetosController@adicionar' ]);
         Route::get('{id}/editar', [ 'as' => 'editar', 'uses' => 'ProjetosController@editar' ]);
+        Route::put('{id}', [ 'as' => 'atualizar', 'uses' => 'ProjetosController@atualizar' ]);
         Route::get('{id}', [ 'as' => 'dashboard', 'uses' => 'ProjetosController@dashboard' ]);
         Route::get('{projeto_id}/telas/{id}', [ 'as' => 'tela', 'uses' => 'ProjetosController@tela' ]);
     });

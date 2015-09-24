@@ -8,8 +8,15 @@
   font-size: 18px;
   font-weight: 300;
   font-family: $fonteSecundaria;
-  padding: 6px 15px;
+  padding: 11px 15px;
   @include button-variant($corBranco, $corPreto, $corPreto);
+
+  [class^="icone-"], [class*=" icone-"] {
+    font-size: 24px;
+    margin-right: 5px;
+    vertical-align: middle;
+    color: $corAmarelo;
+  }
 }
 
 .form-com-divisoria {

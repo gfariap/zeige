@@ -3,10 +3,24 @@
 namespace Zeige\Http\Controllers;
 
 use Zeige\Http\Requests;
+use Zeige\Http\Requests\ProjetoFormularioRequest;
 use Zeige\Projeto;
+use Zeige\Services\ImageUploadService;
 
 class ProjetosController extends Controller
 {
+
+    /**
+     * @var ImageUploadService
+     */
+    private $gerenciadorDeImagens;
+
+
+    public function __construct(ImageUploadService $gerenciadorDeImagens)
+    {
+        $this->gerenciadorDeImagens = $gerenciadorDeImagens;
+    }
+
 
     /**
      * Exibe a tela de listagem de projetos.
@@ -74,6 +88,43 @@ class ProjetosController extends Controller
     public function tela($projeto_id, $id)
     {
         return view('projetos.tela');
+    }
+
+
+    /**
+     * Função que inclui um novo projeto no sistema.
+     *
+     * @param ProjetoFormularioRequest $request
+     */
+    public function adicionar(ProjetoFormularioRequest $request)
+    {
+        $nomeDoArquivo = $this->gerenciadorDeImagens->salvarMarcaDoCliente($request->file('imagem'), $request->cliente);
+
+        $projeto         = new Projeto($request->all());
+        $projeto->imagem = $nomeDoArquivo;
+        $projeto->status = 1;
+        $projeto->save();
+
+        return redirect()->route('projetos.listar');
+    }
+
+
+    /**
+     * Função que atualiza os dados de um projeto no sistema.
+     *
+     * @param ProjetoFormularioRequest $request
+     * @param                          $id
+     */
+    public function atualizar(ProjetoFormularioRequest $request, $id)
+    {
+        $nomeDoArquivo = $this->gerenciadorDeImagens->salvarMarcaDoCliente($request->file('imagem'), $request->cliente);
+
+        $projeto = Projeto::findOrFail($id);
+        $projeto->fill($request->all());
+        $projeto->imagem = $nomeDoArquivo;
+        $projeto->save();
+
+        return redirect()->route('projetos.listar');
     }
 
 }
