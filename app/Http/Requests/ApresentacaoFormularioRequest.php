@@ -2,7 +2,7 @@
 
 namespace Zeige\Http\Requests;
 
-class ProjetoFormularioRequest extends Request
+class ApresentacaoFormularioRequest extends Request
 {
 
     /**
@@ -24,15 +24,10 @@ class ProjetoFormularioRequest extends Request
     public function rules()
     {
         $rules = [
-            'nome'    => 'required|max:255',
-            'cliente' => 'required|max:255',
-            'email'   => 'required|email|max:255',
-            'imagem'  => 'image'
+            'dispositivo' => 'required|in:desktop,tablet,mobile',
+            'versao'      => 'required|max:255',
+            'file'        => 'required|array|min:1'
         ];
-
-        if ($this->method() == 'POST') {
-            $rules['imagem'] = 'required|image';
-        }
 
         return $rules;
     }

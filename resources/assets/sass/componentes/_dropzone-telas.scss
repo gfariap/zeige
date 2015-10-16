@@ -1,0 +1,52 @@
+#dropzone-telas {
+  min-height: auto;
+  border: 0;
+  background: inherit;
+  padding: 0;
+  margin-top: 30px;
+
+  .dropzone-previews {
+    margin-bottom: 20px;
+
+    .dz-message {
+      background: $corBranco;
+      border: 2px dashed $corAmarelo;
+      margin: 0;
+      margin-bottom: 20px;
+      padding: 60px 0;
+      font-size: 36px;
+      color: $corCinzaMuitoClaro;
+
+      span {
+        font-size: 36px;
+        font-weight: 300;
+      }
+    }
+
+    .dz-preview {
+      &.dz-image-preview {
+        background: transparent;
+      }
+
+      .dz-progress {
+        margin-top: -21px;
+      }
+
+      .dz-details {
+        .dz-filename, .dz-size {
+          span {
+            padding: 0;
+          }
+        }
+      }
+
+      .dz-error-message {
+        display: none !important;
+      }
+
+      .dz-success-mark, .dz-error-mark {
+        margin-top: -39px;
+      }
+    }
+  }
+}

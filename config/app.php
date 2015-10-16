@@ -14,6 +14,7 @@ return [
     */
 
     'debug'           => env('APP_DEBUG', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -26,6 +27,7 @@ return [
     */
 
     'url'             => 'http://localhost',
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -38,6 +40,7 @@ return [
     */
 
     'timezone'        => 'America/Sao_Paulo',
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -50,6 +53,7 @@ return [
     */
 
     'locale'          => 'pt-BR',
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -62,6 +66,7 @@ return [
     */
 
     'fallback_locale' => 'en',
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -75,6 +80,7 @@ return [
 
     'key'             => env('APP_KEY', 'SomeRandomString'),
     'cipher'          => 'AES-256-CBC',
+
     /*
     |--------------------------------------------------------------------------
     | Logging Configuration
@@ -89,6 +95,7 @@ return [
     */
 
     'log'             => 'daily',
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -135,6 +142,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Ccovey\LdapAuth\LdapAuthServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -145,6 +153,7 @@ return [
         Zeige\Providers\RouteServiceProvider::class,
 
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -192,6 +201,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Alert'     => UxWeb\SweetAlert\SweetAlert::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
 
     ],
 

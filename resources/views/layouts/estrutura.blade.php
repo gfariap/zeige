@@ -51,6 +51,9 @@
 
 <nav class="navbar navbar-secundaria">
     <div class="container">
+        <div class="navbar-left">
+            @yield ('breadcrumbs')
+        </div>
         <div class="navbar-right">
             @yield ('acoes')
         </div>

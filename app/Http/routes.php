@@ -32,6 +32,11 @@ Route::group([ 'middleware' => 'auth' ], function () {
         Route::get('{id}/editar', [ 'as' => 'editar', 'uses' => 'ProjetosController@editar' ]);
         Route::put('{id}', [ 'as' => 'atualizar', 'uses' => 'ProjetosController@atualizar' ]);
         Route::get('{id}', [ 'as' => 'dashboard', 'uses' => 'ProjetosController@dashboard' ]);
+        Route::post('{id}/telas', [
+            'as'         => 'adicionarTelas',
+            'middleware' => 'ajax',
+            'uses'       => 'ProjetosController@adicionarTelas'
+        ]);
         Route::get('{projeto_id}/telas/{id}', [ 'as' => 'tela', 'uses' => 'ProjetosController@tela' ]);
     });
 

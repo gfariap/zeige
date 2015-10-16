@@ -55,4 +55,15 @@ class Projeto extends \Eloquent
     {
         return $query->where('status', '=', 2);
     }
+
+
+    /**
+     * Possui várias apresentações.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function apresentacoes()
+    {
+        return $this->hasMany(Apresentacao::class, 'projeto_id');
+    }
 }

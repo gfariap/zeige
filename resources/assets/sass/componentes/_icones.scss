@@ -23,6 +23,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icone-pin:before {
+  content: "\e800";
+}
 .icone-adicionar:before {
   content: "\e600";
 }

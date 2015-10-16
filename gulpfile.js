@@ -15,7 +15,10 @@ elixir(function (mix) {
     mix.sass('app.scss');
     mix.scripts([
         '../../../node_modules/jquery/dist/jquery.min.js',
-        '../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js'
+        '../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+        '../../../node_modules/sweetalert/dist/sweetalert.min.js',
+        '../../../node_modules/dropzone/dist/min/dropzone.min.js',
+        'app.js'
     ], 'public/js/app.js');
 });
 

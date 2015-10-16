@@ -2,7 +2,7 @@
  * Bootstrap
  */
 
-input.form-control, textarea.form-control {
+input.form-control, textarea.form-control, select.form-control {
   border-color: $corAmarelo;
 
   &:focus {
@@ -95,4 +95,9 @@ input.form-control, textarea.form-control {
 
 .btn.btn-primary {
   @include button-variant($corBranco, $corCinzaEscuro, $corPreto);
+
+  [class^="icone-"], [class*=" icone-"] {
+    color: $corAmarelo;
+    margin-right: 5px;
+  }
 }

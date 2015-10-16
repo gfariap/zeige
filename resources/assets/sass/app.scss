@@ -4,6 +4,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic,700,700italic");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,700,700italic");
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
+@import "../../../node_modules/sweetalert/dev/sweetalert";
+@import "../../../node_modules/dropzone/src/basic";
+@import "../../../node_modules/dropzone/src/dropzone";
 
 /**
  * Arquivos base
@@ -26,5 +29,10 @@
  */
 
 @import 'componentes/big-form';
+@import 'componentes/inline-button';
 @import 'componentes/icones';
 @import 'componentes/card-projeto';
+@import 'componentes/card-tela';
+@import 'componentes/single-file-upload';
+@import 'componentes/dropzone-telas';
+@import 'componentes/sweet-alert';

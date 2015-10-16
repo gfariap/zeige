@@ -2,10 +2,14 @@
 
 namespace Zeige\Http\Controllers;
 
+use Carbon\Carbon;
+use Zeige\Apresentacao;
 use Zeige\Http\Requests;
+use Zeige\Http\Requests\ApresentacaoFormularioRequest;
 use Zeige\Http\Requests\ProjetoFormularioRequest;
 use Zeige\Projeto;
 use Zeige\Services\ImageUploadService;
+use Zeige\Tela;
 
 class ProjetosController extends Controller
 {
@@ -100,12 +104,56 @@ class ProjetosController extends Controller
     {
         $nomeDoArquivo = $this->gerenciadorDeImagens->salvarMarcaDoCliente($request->file('imagem'), $request->cliente);
 
-        $projeto         = new Projeto($request->all());
+        $projeto = new Projeto($request->all());
+
         $projeto->imagem = $nomeDoArquivo;
+        $projeto->codigo = $this->gerarCodigoCliente();
         $projeto->status = 1;
         $projeto->save();
 
+        alert()->success('Projeto cadastrado!', 'Sucesso!');
+
         return redirect()->route('projetos.listar');
+    }
+
+
+    /**
+     * Função que gera o código único de acesso do cliente.
+     *
+     * @return string
+     */
+    private function gerarCodigoCliente()
+    {
+        return sha1(Carbon::now()->timestamp);
+    }
+
+
+    /**
+     *
+     *
+     * @param ApresentacaoFormularioRequest $request
+     */
+    public function adicionarTelas(ApresentacaoFormularioRequest $request, $id)
+    {
+        $apresentacao = new Apresentacao($request->all());
+
+        $apresentacao->projeto_id = $id;
+        $apresentacao->save();
+
+        foreach ($request->file('file') as $index => $arquivo) {
+            $nomeDoArquivo = $this->gerenciadorDeImagens->salvarTelaDeApresentacao($arquivo, $index . $request->versao);
+
+            $tela = new Tela;
+
+            $tela->imagem          = $nomeDoArquivo;
+            $tela->titulo          = $arquivo->getClientOriginalName();
+            $tela->apresentacao_id = $apresentacao->id;
+            $tela->save();
+        }
+
+        alert()->success('Apresentação salva!', 'Sucesso!');
+
+        return response('Salvo com sucesso.');
     }
 
 
@@ -117,12 +165,19 @@ class ProjetosController extends Controller
      */
     public function atualizar(ProjetoFormularioRequest $request, $id)
     {
-        $nomeDoArquivo = $this->gerenciadorDeImagens->salvarMarcaDoCliente($request->file('imagem'), $request->cliente);
-
         $projeto = Projeto::findOrFail($id);
+
         $projeto->fill($request->all());
-        $projeto->imagem = $nomeDoArquivo;
+
+        if ($request->file('imagem')) {
+            $nomeDoArquivo   = $this->gerenciadorDeImagens->salvarMarcaDoCliente($request->file('imagem'),
+                $request->cliente);
+            $projeto->imagem = $nomeDoArquivo;
+        }
+
         $projeto->save();
+
+        alert()->success('Projeto atualizado!', 'Sucesso!');
 
         return redirect()->route('projetos.listar');
     }

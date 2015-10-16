@@ -2,18 +2,29 @@
   font-weight: 300;
 }
 
+.subtitulo {
+  font-weight: 400;
+  font-size: 48px;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
 .btn-acao {
   border-radius: 0;
   height: 50px;
   font-size: 18px;
   font-weight: 300;
   font-family: $fonteSecundaria;
-  padding: 11px 15px;
+  padding: 13px 15px;
   @include button-variant($corBranco, $corPreto, $corPreto);
+  border: 0;
 
   [class^="icone-"], [class*=" icone-"] {
     font-size: 24px;
-    margin-right: 5px;
+    margin-right: 10px;
+    float: left;
     vertical-align: middle;
     color: $corAmarelo;
   }
@@ -30,4 +41,10 @@
       padding-left: 50px;
     }
   }
+}
+
+.required {
+  font-size: inherit;
+  font-weight: bold;
+  color: $corAmarelo;
 }

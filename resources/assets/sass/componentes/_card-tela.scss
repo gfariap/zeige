@@ -1,0 +1,60 @@
+.card-tela {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+
+  &:hover {
+    box-shadow: 0 0 10px $corCinzaClaro;
+  }
+
+  .acoes {
+    background: $corAmarelo;
+    padding: 0 7px;
+    text-align: center;
+
+    a {
+      margin: 9px 5px;
+      height: 25px;
+      display: inline-block;
+      outline: none !important;
+      text-decoration: none !important;
+
+      @media (max-width: $screen-lg-min) {
+        margin: 9px 10px;
+      }
+
+      @media (max-width: $screen-sm-min) {
+        margin: 9px 7px;
+      }
+
+      [class^="icone-"], [class*="icone-"] {
+        color: $corPreto;
+        font-size: 25px;
+      }
+    }
+  }
+
+  .imagem {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .nome {
+    padding: 5px 10px;
+    height: 35px;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    overflow: hidden;
+    margin-top: -6px;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+}
+
+.cards {
+  margin: 30px -15px 40px;
+}

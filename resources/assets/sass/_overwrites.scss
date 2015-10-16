@@ -129,3 +129,7 @@ hr {
   border-top: 5px solid $corBranco;
   margin-top: 10px;
 }
+
+input[type="file"]::-webkit-file-upload-button {
+  cursor: pointer !important;
+}

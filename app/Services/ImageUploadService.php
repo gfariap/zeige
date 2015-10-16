@@ -14,13 +14,19 @@ class ImageUploadService
     }
 
 
+    public function salvarTelaDeApresentacao(UploadedFile $tela, $nome = '')
+    {
+        return $this->salvar('telas', $tela, $nome);
+    }
+
+
     public function salvar($tipo, UploadedFile $foto, $nome = '')
     {
         $nomeDoArquivo = Carbon::now()->timestamp;
         if (strlen($nome) > 0) {
             $nomeDoArquivo .= '_' . $this->trataNomeDoArquivo($nome);
         }
-        $nomeDoArquivo .= '.' . $foto->getClientOriginalExtension();
+        $nomeDoArquivo = sha1($nomeDoArquivo) . '.' . $foto->getClientOriginalExtension();
         $foto->move(public_path() . '/img/' . $tipo, $nomeDoArquivo);
 
         return $nomeDoArquivo;
