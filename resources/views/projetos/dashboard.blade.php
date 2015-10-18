@@ -17,8 +17,7 @@
 @section ('content')
     <h1 class="titulo"><strong>{{ $projeto->cliente }}</strong> / {{ $projeto->nome }}</h1>
     <hr/>
-    <form action="{{ route('projetos.adicionarTelas', $projeto->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="dropzone-telas" class="dropzone big-form">
-        {!! csrf_field() !!}
+    {!! Form::open(['route' => [ 'projetos.adicionarTelas', $projeto->id ], 'files' => TRUE, 'class' => 'dropzone big-form', 'id' => 'dropzone-telas']) !!}
         <div class="row">
             <div class="col-xs-12 form-group">
                 <div class="dropzone-previews">
@@ -43,7 +42,7 @@
                 </button>
             </div>
         </div>
-    </form>
+    {!! Form::close() !!}
     @foreach ($projeto->apresentacoes as $apresentacao)
         <hr/>
         <h1 class="subtitulo">{{ ucfirst($apresentacao->dispositivo) . ' - ' . $apresentacao->versao }}</h1>

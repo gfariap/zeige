@@ -129,7 +129,7 @@ class ProjetosController extends Controller
 
 
     /**
-     *
+     * Função que inclui uma nova apresentação de um projeto, junto com todas as suas telas.
      *
      * @param ApresentacaoFormularioRequest $request
      */
