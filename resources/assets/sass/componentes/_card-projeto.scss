@@ -26,6 +26,17 @@
       max-width: 200px;
     }
 
+    .overlay {
+      background: $corBranco;
+      opacity: .4;
+      position: absolute;
+      top: 0;
+      right: 45px;
+      left: 0;
+      bottom: 0;
+      display: none;
+    }
+
     .acoes {
       float: right;
       height: 150px;
@@ -36,12 +47,21 @@
       a {
         margin: 12px 0;
         display: block;
+        cursor: pointer;
         outline: none !important;
         text-decoration: none !important;
 
         [class^="icone-"], [class*="icone-"] {
           color: $corPreto;
           font-size: 25px;
+        }
+
+        &.disabled {
+          cursor: default;
+
+          [class^="icone-"], [class*="icone-"] {
+            color: $corCinzaEscuro;
+          }
         }
       }
     }
@@ -58,6 +78,25 @@
     margin-top: -6px;
     padding: 0 5px;
     overflow: hidden;
+  }
+
+  &.inativo {
+    .overlay {
+      display: block;
+    }
+
+    .acoes {
+      background: $corPreto;
+
+      a [class^="icone-"], [class*="icone-"] {
+        color: $corAmarelo;
+      }
+    }
+
+    .nome {
+      background: $corAmarelo;
+      color: $corPreto;
+    }
   }
 }
 

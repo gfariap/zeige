@@ -13,12 +13,20 @@
     padding: 0 7px;
     text-align: center;
 
+    .file-upload-hidden {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+    }
+
     a {
       margin: 9px 5px;
       height: 25px;
       display: inline-block;
       outline: none !important;
       text-decoration: none !important;
+      cursor: pointer;
 
       @media (max-width: $screen-lg-min) {
         margin: 9px 10px;
@@ -31,6 +39,14 @@
       [class^="icone-"], [class*="icone-"] {
         color: $corPreto;
         font-size: 25px;
+      }
+
+      &.disabled {
+        cursor: default;
+
+        [class^="icone-"], [class*="icone-"] {
+          color: $corCinzaEscuro !important;
+        }
       }
     }
   }
@@ -52,6 +68,20 @@
     margin-top: -6px;
     text-overflow: ellipsis;
     word-break: break-all;
+  }
+
+  &.inativo {
+    .overlay {
+      display: block;
+    }
+
+    .acoes {
+      background: $corPreto;
+
+      a [class^="icone-"], [class*="icone-"] {
+        color: $corAmarelo;
+      }
+    }
   }
 }
 

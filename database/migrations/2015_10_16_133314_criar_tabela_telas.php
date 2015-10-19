@@ -17,6 +17,8 @@ class CriarTabelaTelas extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('imagem');
+            $table->integer('ordem')->default(0);
+            $table->integer('status');
             $table->integer('apresentacao_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();

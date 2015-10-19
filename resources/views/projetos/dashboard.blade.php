@@ -43,15 +43,18 @@
             </div>
         </div>
     {!! Form::close() !!}
-    @foreach ($projeto->apresentacoes as $apresentacao)
-        <hr/>
-        <h1 class="subtitulo">{{ ucfirst($apresentacao->dispositivo) . ' - ' . $apresentacao->versao }}</h1>
-        <div class="row cards">
-            @foreach ($apresentacao->telas as $tela)
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 form-group">
-                    @include ('projetos.componentes.tela', [ 'tela' => $tela ])
+    <div id="lista-telas" projeto="{{ $projeto->id }}">
+        @foreach ($projeto->apresentacoes as $apresentacao)
+            <hr/>
+            <h1 class="subtitulo">{{ ucfirst($apresentacao->dispositivo) . ' - ' . $apresentacao->versao }}</h1>
+            <div class="row cards">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 form-group" v-repeat="tela in telas | filterBy {{ $apresentacao->id }} in 'apresentacao_id'">
+                    @include ('projetos.componentes.tela')
                 </div>
-            @endforeach
-        </div>
-    @endforeach
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 form-group">
+                    {!! Form::open(['route' => [ 'telas.adicionar', $apresentacao->id ], 'files' => TRUE, 'class' => 'dropzone dropzone-single', 'id' => 'dropzone-apresentacao-'.$apresentacao->id]) !!}
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection

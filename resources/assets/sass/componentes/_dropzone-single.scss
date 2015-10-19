@@ -1,0 +1,24 @@
+.dropzone-single {
+  border: 0;
+  background: $corAmarelo;
+  color: $corPreto;
+
+  .dz-message {
+    margin: 1em 0;
+    display: block !important;
+
+    span {
+      font-size: 18px;
+    }
+
+    [class^="icone-"], [class*="icone-"] {
+      font-size: 54px;
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+
+  .dz-preview {
+    display: none !important;
+  }
+}

@@ -27,17 +27,38 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
     Route::group([ 'prefix' => 'projetos', 'as' => 'projetos.' ], function () {
         Route::get('/', [ 'as' => 'listar', 'uses' => 'ProjetosController@listar' ]);
+        Route::get('buscar', [ 'as' => 'buscar', 'middleware' => 'ajax', 'uses' => 'ProjetosController@buscar' ]);
         Route::get('incluir', [ 'as' => 'incluir', 'uses' => 'ProjetosController@incluir' ]);
         Route::post('/', [ 'as' => 'adicionar', 'uses' => 'ProjetosController@adicionar' ]);
         Route::get('{id}/editar', [ 'as' => 'editar', 'uses' => 'ProjetosController@editar' ]);
         Route::put('{id}', [ 'as' => 'atualizar', 'uses' => 'ProjetosController@atualizar' ]);
+        Route::patch('{id}/ativar',
+            [ 'as' => 'ativar', 'middleware' => 'ajax', 'uses' => 'ProjetosController@ativar' ]);
+        Route::patch('{id}/desativar',
+            [ 'as' => 'desativar', 'middleware' => 'ajax', 'uses' => 'ProjetosController@desativar' ]);
         Route::get('{id}', [ 'as' => 'dashboard', 'uses' => 'ProjetosController@dashboard' ]);
         Route::post('{id}/telas', [
             'as'         => 'adicionarTelas',
             'middleware' => 'ajax',
             'uses'       => 'ProjetosController@adicionarTelas'
         ]);
-        Route::get('{projeto_id}/telas/{id}', [ 'as' => 'tela', 'uses' => 'ProjetosController@tela' ]);
+    });
+
+    Route::group([ 'prefix' => 'telas', 'as' => 'telas.' ], function () {
+        Route::get('{projeto_id}/buscar',
+            [ 'as' => 'buscar', 'middleware' => 'ajax', 'uses' => 'TelasController@buscar' ]);
+        Route::get('{id}', [ 'as' => 'tela', 'uses' => 'TelasController@tela' ]);
+        Route::post('{apresentacao_id}', [
+            'as'         => 'adicionar',
+            'middleware' => 'ajax',
+            'uses'       => 'TelasController@adicionarTelas'
+        ]);
+        Route::put('{id}', [ 'as' => 'atualizar', 'middleware' => 'ajax', 'uses' => 'TelasController@atualizar' ]);
+        Route::put('{id}/imagem', [ 'as' => 'imagem', 'uses' => 'TelasController@imagem' ]);
+        Route::patch('{id}/ativar', [ 'as' => 'ativar', 'middleware' => 'ajax', 'uses' => 'TelasController@ativar' ]);
+        Route::patch('{id}/desativar',
+            [ 'as' => 'desativar', 'middleware' => 'ajax', 'uses' => 'TelasController@desativar' ]);
+        Route::delete('{id}', [ 'as' => 'excluir', 'middleware' => 'ajax', 'uses' => 'TelasController@excluir' ]);
     });
 
 });

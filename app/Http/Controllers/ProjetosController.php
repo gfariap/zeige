@@ -41,6 +41,17 @@ class ProjetosController extends Controller
 
 
     /**
+     * Retorna a lista de projetos cadastrados no sistema como JSON.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function buscar()
+    {
+        return Projeto::all();
+    }
+
+
+    /**
      * Exibe o formulário de inclusão de projetos.
      *
      * @return \Illuminate\View\View
@@ -78,20 +89,6 @@ class ProjetosController extends Controller
         $projeto = Projeto::findOrFail($id);
 
         return view('projetos.dashboard', compact('projeto'));
-    }
-
-
-    /**
-     * Exibe uma tela específica de um projeto.
-     *
-     * @param $projeto_id
-     * @param $id
-     *
-     * @return \Illuminate\View\View
-     */
-    public function tela($projeto_id, $id)
-    {
-        return view('projetos.tela');
     }
 
 
@@ -147,6 +144,8 @@ class ProjetosController extends Controller
 
             $tela->imagem          = $nomeDoArquivo;
             $tela->titulo          = $arquivo->getClientOriginalName();
+            $tela->status          = 1;
+            $tela->ordem           = $index;
             $tela->apresentacao_id = $apresentacao->id;
             $tela->save();
         }
@@ -180,6 +179,42 @@ class ProjetosController extends Controller
         alert()->success('Projeto atualizado!', 'Sucesso!');
 
         return redirect()->route('projetos.listar');
+    }
+
+
+    /**
+     * Função para desativar um projeto.
+     *
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function desativar($id)
+    {
+        $projeto = Projeto::findOrFail($id);
+
+        $projeto->status = 0;
+        $projeto->save();
+
+        return response('Projeto desativado com sucesso!');
+    }
+
+
+    /**
+     * Função para ativar um projeto.
+     *
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function ativar($id)
+    {
+        $projeto = Projeto::findOrFail($id);
+
+        $projeto->status = 1;
+        $projeto->save();
+
+        return response('Projeto ativado com sucesso!');
     }
 
 }

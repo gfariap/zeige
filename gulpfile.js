@@ -19,6 +19,7 @@ elixir(function (mix) {
         '../../../node_modules/sweetalert/dist/sweetalert.min.js',
         '../../../node_modules/dropzone/dist/min/dropzone.min.js',
         '../../../node_modules/vue/dist/vue.min.js',
+        '../../../node_modules/vue-resource/dist/vue-resource.min.js',
         'app.js'
     ], 'public/js/app.js');
 });

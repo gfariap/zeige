@@ -10,12 +10,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta id="token" name="token" value="{{ csrf_token() }}">
     <title>Zeige Resultate</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
 </head>
-<body id="app">
+<body>
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
@@ -53,7 +54,6 @@
     <div class="container">
         <div class="navbar-left">
             @yield ('breadcrumbs')
-            @{{ teste }}
         </div>
         <div class="navbar-right">
             @yield ('acoes')
