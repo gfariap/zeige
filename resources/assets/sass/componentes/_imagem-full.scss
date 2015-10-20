@@ -1,0 +1,48 @@
+.imagem-full {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 20px;
+
+  img {
+    position: relative;
+    left: 50%;
+    display: block;
+    transform: translateX(-50%);
+  }
+
+  .container-marcadores {
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    cursor: crosshair;
+    border: 3px solid transparent;
+
+    &.area-exibida {
+      border: 3px dotted $corAmarelo;
+      background: rgba(254, 199, 14, .1);
+    }
+
+    .marcador {
+      height: 40px;
+      width: 40px;
+      background: black;
+      color: rgb(254,199,14);
+      border: 3px solid rgb(254,199,14);
+      border-radius: 100%;
+      font-size: 34px;
+      font-family: $fonteSecundaria;
+      margin: 0;
+      padding: 2px 0 0 1px;
+      text-align: center;
+      line-height: .9;
+      position: absolute;
+      cursor: pointer;
+    }
+  }
+}

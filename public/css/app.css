@@ -7347,7 +7347,11 @@ input.form-control, textarea.form-control, select.form-control {
     font-weight: 400; }
 
 .titulo {
-  font-weight: 300; }
+  font-weight: 300;
+  display: inline-block; }
+  .titulo small {
+    font-size: 20px;
+    color: black; }
 
 .subtitulo {
   font-weight: 400;
@@ -7687,8 +7691,13 @@ input.form-control, textarea.form-control, select.form-control {
         cursor: default; }
         .card-tela .acoes a.disabled [class^="icone-"], .card-tela .acoes a.disabled [class*="icone-"] {
           color: #333333 !important; }
-  .card-tela .imagem img {
-    max-width: 100%; }
+  .card-tela .imagem {
+    height: 200px !important;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: move; }
+    .card-tela .imagem img {
+      max-width: 100%; }
   .card-tela .nome {
     padding: 5px 10px;
     height: 35px;
@@ -7697,7 +7706,6 @@ input.form-control, textarea.form-control, select.form-control {
     font-weight: 300;
     text-align: center;
     overflow: hidden;
-    margin-top: -6px;
     text-overflow: ellipsis;
     word-break: break-all; }
   .card-tela.inativo .overlay {
@@ -7783,6 +7791,54 @@ input.form-control, textarea.form-control, select.form-control {
       margin-bottom: 15px; }
   .dropzone-single .dz-preview {
     display: none !important; }
+
+.checkbox-action {
+  margin: 10px 0; }
+  .checkbox-action label {
+    font-size: 20px; }
+    .checkbox-action label input[type="checkbox"] {
+      margin: 9px 0 0 -20px; }
+
+.imagem-full {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 20px; }
+  .imagem-full img {
+    position: relative;
+    left: 50%;
+    display: block;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); }
+  .imagem-full .container-marcadores {
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    cursor: crosshair;
+    border: 3px solid transparent; }
+    .imagem-full .container-marcadores.area-exibida {
+      border: 3px dotted #fec70e;
+      background: rgba(254, 199, 14, 0.1); }
+    .imagem-full .container-marcadores .marcador {
+      height: 40px;
+      width: 40px;
+      background: black;
+      color: #fec70e;
+      border: 3px solid #fec70e;
+      border-radius: 100%;
+      font-size: 34px;
+      font-family: "Roboto";
+      margin: 0;
+      padding: 2px 0 0 1px;
+      text-align: center;
+      line-height: .9;
+      position: absolute;
+      cursor: pointer; }
 
 .sweet-alert p {
   font-size: 20px; }

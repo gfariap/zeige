@@ -52,6 +52,11 @@
   }
 
   .imagem {
+    height: 200px !important;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .1);
+    cursor: move;
+
     img {
       max-width: 100%;
     }
@@ -65,7 +70,6 @@
     font-weight: 300;
     text-align: center;
     overflow: hidden;
-    margin-top: -6px;
     text-overflow: ellipsis;
     word-break: break-all;
   }

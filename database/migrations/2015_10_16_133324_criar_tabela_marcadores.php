@@ -17,7 +17,6 @@ class CriarTabelaMarcadores extends Migration
             $table->increments('id');
             $table->string('x');
             $table->string('y');
-            $table->string('titulo');
             $table->string('descricao');
             $table->integer('tela_id')->unsigned();
             $table->timestamps();

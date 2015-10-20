@@ -21,7 +21,7 @@ class Marcador extends \Eloquent
      *
      * @var array
      */
-    protected $fillable = [ 'x', 'y', 'titulo', 'descricao', 'tela_id' ];
+    protected $fillable = [ 'x', 'y', 'descricao', 'tela_id' ];
 
     /**
      * The attributes that should be mutated to dates.

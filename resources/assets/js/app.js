@@ -17,6 +17,10 @@ $(document).ready(function(){
         $("#form-"+$(this).attr('id')).submit();
     });
 
+    $('.container-marcadores').on('click', function() {
+        console.log('clicou');
+    });
+
     $('.dropzone-single').dropzone({
         uploadMultiple: true,
         parallelUploads: 100,
@@ -169,6 +173,48 @@ $(document).ready(function(){
                             swal("Sucesso!", response, "success");
                         });
                     });
+                }
+            }
+        });
+    }
+
+    if ($('#lista-marcadores').length) {
+        window.listaMarcadores = new Vue({
+            el: '#lista-marcadores',
+            data: {
+                area: false,
+                editando: false,
+                editandoId: null,
+                marcador: {
+                    descricao: ''
+                }
+            },
+            methods: {
+                removerMarcadorUI: function(id) {
+                    $('.marcador[data-id="'+id+'"]').remove();
+                },
+                abrirPopover: function(id) {
+                    $('.popover').remove();
+                    $('.marcador[data-id="'+id+'"]').popover({
+                        content: $('.conteudo-marcador').html(),
+                        placement: 'bottom',
+                        html: true
+                    }).click();
+                },
+                incluiMarcador: function(e) {
+                    if (!$(e.target).hasClass('marcador')){
+                        if (this.editando && this.editandoId == 0) {
+                            this.removerMarcadorUI(0);
+                        }
+                        $(e.target).append('<div class="marcador" data-id="0" style="top: '+ (e.offsetY-20) +'px; left: '+ (e.offsetX-21) +'px;">+</div>');
+                        this.editando = true;
+                        this.editandoId = 0;
+                        this.abrirPopover(0);
+                    }
+                },
+                areaUtil: function() {
+                    this.area = !this.area;
+                    $('.container-marcadores').toggleClass('area-exibida');
                 }
             }
         });
