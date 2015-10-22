@@ -7471,6 +7471,108 @@ input.form-control, textarea.form-control, select.form-control {
     height: 50px;
     background: #333333; }
 
+.pagina-externa {
+  height: 100%; }
+  .pagina-externa .preview {
+    background-image: url("../img/background_preview.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%; }
+  .pagina-externa .rodape {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: black;
+    height: 100px;
+    color: #fec70e; }
+    .pagina-externa .rodape .marca {
+      background: #fec70e;
+      height: 104px;
+      width: 96px;
+      padding: 30px 28px;
+      position: absolute;
+      bottom: 0; }
+      .pagina-externa .rodape .marca:before {
+        border: solid transparent;
+        content: ' ';
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-right-color: white;
+        border-width: 9px;
+        top: 50%;
+        right: 0;
+        margin-top: -7px;
+        z-index: 1000; }
+      .pagina-externa .rodape .marca:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        right: -4px;
+        border-bottom: 4px solid #d1a30a;
+        border-right: 4px solid transparent; }
+    .pagina-externa .rodape .info {
+      margin-left: 96px; }
+      .pagina-externa .rodape .info .cliente {
+        background: white;
+        height: 100px;
+        display: inline-block;
+        padding: 10px 20px;
+        text-align: center;
+        position: relative;
+        float: left; }
+        .pagina-externa .rodape .info .cliente img {
+          max-height: 80px;
+          max-width: 210px; }
+        .pagina-externa .rodape .info .cliente:before {
+          border: solid transparent;
+          content: ' ';
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+          border-right-color: black;
+          border-width: 9px;
+          top: 50%;
+          right: 0;
+          margin-top: -7px;
+          z-index: 1000; }
+      .pagina-externa .rodape .info .telas {
+        float: left;
+        padding: 28px 20px; }
+        .pagina-externa .rodape .info .telas .form-group:not(:last-child) {
+          margin-right: 20px; }
+        .pagina-externa .rodape .info .telas .form-group label {
+          font-size: 18px;
+          font-weight: 400;
+          margin: 0 10px;
+          vertical-align: sub; }
+        .pagina-externa .rodape .info .telas .form-group select.form-control {
+          height: 45px;
+          font-size: 20px; }
+          .pagina-externa .rodape .info .telas .form-group select.form-control#versao {
+            max-width: 175px; }
+          .pagina-externa .rodape .info .telas .form-group select.form-control#tela {
+            max-width: 275px; }
+      .pagina-externa .rodape .info .dispositivos {
+        float: right;
+        height: 100px;
+        padding: 38px 0; }
+        .pagina-externa .rodape .info .dispositivos a {
+          text-decoration: none !important;
+          font-size: 24px; }
+          .pagina-externa .rodape .info .dispositivos a [class^="icone-"], .pagina-externa .rodape .info .dispositivos a [class*="icone-"] {
+            color: white; }
+          .pagina-externa .rodape .info .dispositivos a:not(:first-child) {
+            margin-left: 20px; }
+          .pagina-externa .rodape .info .dispositivos a:hover [class^="icone-"], .pagina-externa .rodape .info .dispositivos a:hover [class*="icone-"] {
+            color: #fec70e; }
+
 .login-user {
   display: block;
   margin: 50px auto 25px; }
@@ -7532,6 +7634,15 @@ input.form-control, textarea.form-control, select.form-control {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icone-desktop:before {
+  content: "\e900"; }
+
+.icone-mobile:before {
+  content: "\e901"; }
+
+.icone-tablet:before {
+  content: "\e902"; }
 
 .icone-pin:before {
   content: "\e800"; }

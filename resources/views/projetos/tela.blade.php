@@ -10,7 +10,7 @@
 
 @section ('content')
     <div id="lista-marcadores">
-        <h1 class="titulo"><strong>{{ $tela->apresentacao->projeto->nome }}</strong> / Marcadores / <small>{{ $tela->titulo }}</small></h1>
+        <h1 class="titulo"><strong>{{ $tela->apresentacao->dispositivo }}</strong> / {{ $tela->apresentacao->versao }} / <small>{{ $tela->titulo }}</small></h1>
         <div class="checkbox checkbox-action pull-right">
             <label>
                 <input type="checkbox" v-on="change: areaUtil"/> Exibir área

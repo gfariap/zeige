@@ -23,6 +23,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icone-desktop:before {
+  content: "\e900";
+}
+.icone-mobile:before {
+  content: "\e901";
+}
+.icone-tablet:before {
+  content: "\e902";
+}
 .icone-pin:before {
   content: "\e800";
 }

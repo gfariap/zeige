@@ -121,7 +121,7 @@ class ProjetosController extends Controller
      */
     private function gerarCodigoCliente()
     {
-        return sha1(Carbon::now()->timestamp);
+        return substr(sha1(Carbon::now()->timestamp), 0, 12);
     }
 
 
@@ -215,6 +215,21 @@ class ProjetosController extends Controller
         $projeto->save();
 
         return response('Projeto ativado com sucesso!');
+    }
+
+
+    /**
+     * Exibe a página de visualização externa do projeto.
+     *
+     * @param $codigo
+     *
+     * @return \Illuminate\View\View
+     */
+    public function externo($codigo)
+    {
+        $projeto = Projeto::where('codigo', '=', $codigo)->firstOrFail();
+
+        return view('paginas.externo', compact('projeto'));
     }
 
 }

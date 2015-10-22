@@ -1,0 +1,146 @@
+.pagina-externa {
+  height: 100%;
+
+  .preview {
+    background-image: url("../img/background_preview.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+
+  .rodape {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: $corPreto;
+    height: 100px;
+    color: $corAmarelo;
+
+    .marca {
+      background: $corAmarelo;
+      height: 104px;
+      width: 96px;
+      padding: 30px 28px;
+      position: absolute;
+      bottom: 0;
+
+      &:before {
+        border: solid transparent;
+        content: ' ';
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-right-color: $corBranco;
+        border-width: 9px;
+        top: 50%;
+        right: 0;
+        margin-top: -7px;
+        z-index: 1000;
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        right: -4px;
+        border-bottom: 4px solid $corAmareloEscuro;
+        border-right: 4px solid transparent;
+      }
+    }
+
+    .info {
+      margin-left: 96px;
+
+      .cliente {
+        background: white;
+        height: 100px;
+        display: inline-block;
+        padding: 10px 20px;
+        text-align: center;
+        position: relative;
+        float: left;
+
+        img {
+          max-height: 80px;
+          max-width: 210px;
+        }
+
+        &:before {
+          border: solid transparent;
+          content: ' ';
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+          border-right-color: $corPreto;
+          border-width: 9px;
+          top: 50%;
+          right: 0;
+          margin-top: -7px;
+          z-index: 1000;
+        }
+      }
+
+      .telas {
+        float: left;
+        padding: 28px 20px;
+
+        .form-group {
+          &:not(:last-child) {
+            margin-right: 20px;
+          }
+
+          label {
+            font-size: 18px;
+            font-weight: 400;
+            margin: 0 10px;
+            vertical-align: sub;
+          }
+
+          select.form-control {
+            height: 45px;
+            font-size: 20px;
+
+            &#versao {
+              max-width: 175px
+            }
+
+            &#tela {
+              max-width: 275px;
+            }
+          }
+        }
+      }
+
+      .dispositivos {
+        float: right;
+        height: 100px;
+        padding: 38px 0;
+
+        a {
+          text-decoration: none !important;
+          font-size: 24px;
+
+          [class^="icone-"], [class*="icone-"] {
+            color: $corBranco;
+          }
+
+          &:not(:first-child) {
+            margin-left: 20px;
+          }
+
+          &:hover {
+            [class^="icone-"], [class*="icone-"] {
+              color: $corAmarelo;
+            }
+          }
+        }
+      }
+    }
+  }
+}

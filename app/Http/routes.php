@@ -62,3 +62,5 @@ Route::group([ 'middleware' => 'auth' ], function () {
     });
 
 });
+
+Route::get('{codigo}', [ 'as' => 'externo', 'uses' => 'ProjetosController@externo' ]);

@@ -52,4 +52,14 @@ class Apresentacao extends \Eloquent
         return $this->hasMany(Tela::class, 'apresentacao_id');
     }
 
+
+    /**
+     * Exibir dispositivo com primeira letra maiúscula.
+     *
+     * @return string
+     */
+    public function getDispositivoAttribute() {
+        return ucfirst($this->attributes['dispositivo']);
+    }
+
 }
