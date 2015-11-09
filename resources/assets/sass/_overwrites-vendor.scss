@@ -70,6 +70,12 @@ input.form-control, textarea.form-control, select.form-control {
         text-align: right;
       }
     }
+
+    .side-logo {
+      display: inherit;
+      max-height: 42px;
+      margin: 18px 0 0 102px;
+    }
   }
 
   &.navbar-secundaria {

@@ -36,6 +36,7 @@
             <a class="navbar-brand" href="{{ route('projetos.listar') }}">
                 <img src="{{ asset('img/logo.png') }}" alt="Zeige Resultate"/>
             </a>
+            <img src="{{ asset('img/zeige.png') }}" class="side-logo" alt="Zeige Resultate"/>
         </div>
         @if (Auth::user())
             <div id="navbar" class="navbar-collapse collapse">

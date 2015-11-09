@@ -5,6 +5,7 @@ namespace Zeige\Http\Controllers;
 use Illuminate\Http\Request;
 use Zeige\Apresentacao;
 use Zeige\Http\Requests;
+use Zeige\Marcador;
 use Zeige\Services\ImageUploadService;
 use Zeige\Tela;
 
@@ -162,6 +163,46 @@ class TelasController extends Controller
         alert()->success('Telas adicionadas!', 'Sucesso!');
 
         return response('Salvo com sucesso.');
+    }
+
+
+    /**
+     * Função para incluir/atualizar marcadores da tela.
+     *
+     * @param Request $request
+     * @param         $id
+     */
+    public function marcador(Request $request, $id)
+    {
+        $dados = $request->all();
+        if ($dados['pk'] == '0') {
+            $marcador = new Marcador;
+        } else {
+            $marcador = Marcador::findOrFail($dados['pk']);
+        }
+        $marcador->descricao = $dados['value'];
+        $marcador->x         = $dados['x'];
+        $marcador->y         = $dados['y'];
+        $marcador->tela_id   = $id;
+        $marcador->save();
+
+        return $marcador;
+    }
+
+
+    /**
+     * Função para excluir marcadores da tela
+     *
+     * @param Request $request
+     * @param         $id
+     * @param         $marcador_id
+     *
+     * @throws \Exception
+     */
+    public function excluirMarcador(Request $request, $id, $marcador_id)
+    {
+        $marcador = Marcador::findOrFail($marcador_id);
+        $marcador->delete();
     }
 
 

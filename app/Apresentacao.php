@@ -54,11 +54,51 @@ class Apresentacao extends \Eloquent
 
 
     /**
+     * Filtra apenas as apresentações desktop do projeto.
+     *
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeDesktop($query)
+    {
+        return $query->where('dispositivo', '=', 'desktop');
+    }
+
+
+    /**
+     * Filtra apenas as apresentações tablet do projeto.
+     *
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeTablet($query)
+    {
+        return $query->where('dispositivo', '=', 'tablet');
+    }
+
+
+    /**
+     * Filtra apenas as apresentações mobile do projeto.
+     *
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeMobile($query)
+    {
+        return $query->where('dispositivo', '=', 'mobile');
+    }
+
+
+    /**
      * Exibir dispositivo com primeira letra maiúscula.
      *
      * @return string
      */
-    public function getDispositivoAttribute() {
+    public function getDispositivoAttribute()
+    {
         return ucfirst($this->attributes['dispositivo']);
     }
 

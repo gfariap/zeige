@@ -58,6 +58,51 @@ class Projeto extends \Eloquent
 
 
     /**
+     * Filtra apenas as apresentações desktop do projeto.
+     *
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeDesktop($query)
+    {
+        return $query->whereHas('apresentacoes', function ($query) {
+            $query->desktop();
+        });
+    }
+
+
+    /**
+     * Filtra apenas as apresentações tablet do projeto.
+     *
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeTablet($query)
+    {
+        return $query->whereHas('apresentacoes', function ($query) {
+            $query->tablet();
+        });
+    }
+
+
+    /**
+     * Filtra apenas as apresentações mobile do projeto.
+     *
+     * @param $query
+     *
+     * @return mixed
+     */
+    public function scopeMobile($query)
+    {
+        return $query->whereHas('apresentacoes', function ($query) {
+            $query->mobile();
+        });
+    }
+
+
+    /**
      * Possui várias apresentações.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

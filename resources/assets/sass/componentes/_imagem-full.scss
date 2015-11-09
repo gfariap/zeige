@@ -43,6 +43,59 @@
       line-height: .9;
       position: absolute;
       cursor: pointer;
+      font-style: normal;
+    }
+
+    .popover {
+      cursor: default;
+
+      textarea {
+        resize: none;
+      }
+
+      div {
+        cursor: default;
+      }
+
+      .popover-content {
+        padding: 10px;
+      }
+
+      .editable-input {
+        width: 100%;
+
+        textarea {
+          width: 100%;
+          font-size: 16px;
+        }
+      }
+
+      .editable-buttons {
+        min-width: 250px;
+        margin-top: 10px;
+
+        .editable-submit {
+          font-size: 18px;
+          @include button-variant($corPreto, $corAmarelo, $corAmareloEscuro);
+        }
+
+        .editable-cancel {
+          margin-left: 0;
+          font-size: 18px;
+        }
+
+        .row {
+          .col-xs-6 {
+            &:first-child {
+              padding-right: 5px;
+            }
+
+            &:last-child {
+              padding-left: 5px;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -48,6 +48,10 @@ Route::group([ 'middleware' => 'auth' ], function () {
         Route::get('{projeto_id}/buscar',
             [ 'as' => 'buscar', 'middleware' => 'ajax', 'uses' => 'TelasController@buscar' ]);
         Route::get('{id}', [ 'as' => 'tela', 'uses' => 'TelasController@tela' ]);
+        Route::post('{id}/marcadores',
+            [ 'as' => 'marcador', 'middleware' => 'ajax', 'uses' => 'TelasController@marcador' ]);
+        Route::delete('{id}/marcadores/{marcador_id}',
+            [ 'as' => 'excluirMarcador', 'middleware' => 'ajax', 'uses' => 'TelasController@excluirMarcador' ]);
         Route::post('{apresentacao_id}', [
             'as'         => 'adicionar',
             'middleware' => 'ajax',

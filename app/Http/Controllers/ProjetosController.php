@@ -229,7 +229,17 @@ class ProjetosController extends Controller
     {
         $projeto = Projeto::where('codigo', '=', $codigo)->firstOrFail();
 
-        return view('paginas.externo', compact('projeto'));
+        if ($projeto->desktop()->count()) {
+            $principal = 'desktop';
+        } else if ($projeto->tablet()->count()) {
+            $principal = 'tablet';
+        } else if ($projeto->mobile()->count()) {
+            $principal = 'mobile';
+        } else {
+            abort(404);
+        }
+
+        return view('paginas.externo', compact('projeto', 'principal'));
     }
 
 }

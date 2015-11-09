@@ -17,10 +17,6 @@ $(document).ready(function(){
         $("#form-"+$(this).attr('id')).submit();
     });
 
-    $('.container-marcadores').on('click', function() {
-        console.log('clicou');
-    });
-
     $('.dropzone-single').dropzone({
         uploadMultiple: true,
         parallelUploads: 100,
@@ -178,9 +174,45 @@ $(document).ready(function(){
         });
     }
 
+    if ($('#pagina-externa').length) {
+        window.paginaExterna = new Vue({
+            el: '#pagina-externa',
+            props: ['principal', 'codigo'],
+            data: {
+                atual: null
+            },
+            ready: function() {
+                this.buscarApresentacoes(this.principal);
+            },
+            methods: {
+                buscarApresentacoes: function (dispositivo) {
+                    this.$http.get(this.codigo+'/apresentacoes/'+dispositivo, function(apresentacoes) {
+                        this.$set('apresentacoes', apresentacoes);
+                        $('#apresentacoes').change();
+                    });
+                    this.$set('dispositivo', dispositivo);
+                },
+                buscarTelas: function (apresentacao) {
+                    this.$http.get(this.codigo+'/apresentacoes/'+apresentacao+'/telas', function(telas) {
+                        this.$set('telas', telas);
+                        $('#telas').change();
+                    });
+                },
+                telaAtual: function (tela) {
+                    for(var i = 0; i < this.telas.length; i++) {
+                        if (this.telas[i].id == tela) {
+                            this.atual = this.telas[i];
+                        }
+                    }
+                }
+            }
+        });
+    }
+
     if ($('#lista-marcadores').length) {
         window.listaMarcadores = new Vue({
             el: '#lista-marcadores',
+            props: ['tela'],
             data: {
                 area: false,
                 editando: false,
@@ -189,27 +221,59 @@ $(document).ready(function(){
                     descricao: ''
                 }
             },
+            ready: function() {
+                $.fn.editable.defaults.url = '/telas/'+this.tela+'/marcadores';
+                $.fn.editable.defaults.ajaxOptions = {
+                    'headers' : {
+                        'X-CSRF-TOKEN': document.querySelector('#token').getAttribute('value')
+                    }
+                };
+                $.fn.editableform.buttons = '<div class="row"><div class="col-xs-6"><button type="submit" class="btn btn-success btn-block editable-submit">Salvar</button></div><div class="col-xs-6"><button type="button" class="btn btn-primary btn-block editable-cancel">Excluir</button></div></div>';
+                $('#lista-marcadores').editable({
+                    selector: '.marcador',
+                    placement: 'bottom',
+                    type: 'textarea',
+                    showbuttons: 'bottom',
+                    autotext: 'never',
+                    display: function(value, sourceData) {
+                        $(this).html('+');
+                    },
+                    emptytext: '+',
+                    rows: 5,
+                    success: function(response, newValue) {
+                        $(this).attr('data-pk', response['id'].toString());
+                        $(this).attr('data-value', response['descricao']);
+                        $(this).editable('option', 'pk', response['id']);
+                        $(this).editable('option', 'value', response['descricao']);
+                    }
+                });
+            },
             methods: {
                 removerMarcadorUI: function(id) {
-                    $('.marcador[data-id="'+id+'"]').remove();
+                    $('.marcador[data-pk="'+id+'"]').remove();
+                    if (id.toString() != '0') {
+                        this.$http.delete('/telas/'+this.tela+'/marcadores/'+id, function(response) {});
+                    }
                 },
                 abrirPopover: function(id) {
-                    $('.popover').remove();
-                    $('.marcador[data-id="'+id+'"]').popover({
-                        content: $('.conteudo-marcador').html(),
-                        placement: 'bottom',
-                        html: true
-                    }).click();
+                    $('.marcador[data-pk="'+id+'"]').click();
                 },
                 incluiMarcador: function(e) {
-                    if (!$(e.target).hasClass('marcador')){
+                    if ($(e.target).hasClass('container-marcadores')){
                         if (this.editando && this.editandoId == 0) {
                             this.removerMarcadorUI(0);
                         }
-                        $(e.target).append('<div class="marcador" data-id="0" style="top: '+ (e.offsetY-20) +'px; left: '+ (e.offsetX-21) +'px;">+</div>');
+                        $(e.target).append('<div name="marcador" class="marcador editable-click editable-empty" data-value="" data-pk="0" data-params="{y:'+ (e.offsetY-20) +', x:'+ (e.offsetX-21) +'}" style="top: '+ (e.offsetY-20) +'px; left: '+ (e.offsetX-21) +'px;">+</div>');
                         this.editando = true;
                         this.editandoId = 0;
                         this.abrirPopover(0);
+                    } else if ($(e.target).hasClass('marcador')) {
+                        this.editando = true;
+                        this.editandoId = e.target.dataset.pk;
+                    } else if ($(e.target).hasClass('editable-cancel')) {
+                        this.editando = false;
+                        this.removerMarcadorUI(this.editandoId);
+                        this.editandoId = 0;
                     }
                 },
                 areaUtil: function() {

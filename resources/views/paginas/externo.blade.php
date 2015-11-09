@@ -23,7 +23,7 @@
     improve your experience.</p>
 <![endif]-->
 
-<div class="pagina-externa">
+<div class="pagina-externa" id="pagina-externa" principal="{{ $principal }}" codigo="{{ $projeto->codigo }}">
     <div class="preview">
 
     </div>
@@ -42,26 +42,26 @@
                 <div class="telas form-inline">
                     <div class="form-group">
                         <label for="versao">Versão:</label>
-                        <select name="versao" id="versao" class="form-control">
-                            <option value="1">Versão 1</option>
-                            <option value="2">Versão 2</option>
-                            <option value="3">Versão 3</option>
+                        <select name="versao" id="versao" class="form-control" v-on="change: buscarTelas($(this).val())">
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="tela">Tela:</label>
-                        <select name="tela" id="tela" class="form-control">
-                            <option value="1">Tela 1</option>
-                            <option value="2">Tela 2</option>
-                            <option value="3">Tela 3</option>
+                        <select name="tela" id="tela" class="form-control" v-on="change: telaAtual($(this).val())">
                         </select>
                     </div>
                 </div>
 
                 <div class="dispositivos">
-                    <a href="#" title="Desktop"><i class="icone-desktop"></i></a>
-                    <a href="#" title="Tablet"><i class="icone-tablet"></i></a>
-                    <a href="#" title="Mobile"><i class="icone-mobile"></i></a>
+                    @if ($projeto->desktop()->count())
+                        <a href="#" title="Desktop" v-on="click: buscarApresentacoes('desktop')"><i class="icone-desktop"></i></a>
+                    @endif
+                    @if ($projeto->tablet()->count())
+                        <a href="#" title="Tablet" v-on="click: buscarApresentacoes('tablet')"><i class="icone-tablet"></i></a>
+                    @endif
+                    @if ($projeto->mobile()->count())
+                        <a href="#" title="Mobile" v-on="click: buscarApresentacoes('mobile')"><i class="icone-mobile"></i></a>
+                    @endif
                 </div>
             </div>
 
