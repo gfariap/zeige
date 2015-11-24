@@ -2,10 +2,72 @@
   height: 100%;
 
   .preview {
-    background-image: url("../img/background_preview.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%;
+    background: $corBackground;
+    position: absolute;
+    top: 0;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+
+    &.tablet, &.mobile {
+      background-image: url("../img/background_preview.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &.desktop {
+      .imagem-full img {
+        box-shadow: 0 0 14px rgba(0, 0, 0, .4);
+      }
+    }
+
+    &.tablet {
+      .frame {
+        width: 887px;
+        height: 1249px;
+        background-image: url("../img/tablet.png");
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &.mobile {
+      .frame {
+        width: 381px;
+        height: 745px;
+        background-image: url("../img/mobile.png");
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .imagem-full {
+      display: none;
+      margin-top: 0;
+
+      .container-marcadores {
+        cursor: auto;
+
+        .popover {
+          background: $corAmarelo;
+
+          .arrow {
+            border-bottom-color: rgba(0, 0, 0, 0.37);
+
+            &::after {
+              border-bottom-color: $corAmarelo;
+            }
+          }
+        }
+      }
+    }
+
+    &.com-imagem {
+      .imagem-full {
+        display: block;
+      }
+    }
   }
 
   .rodape {
@@ -59,6 +121,7 @@
       .cliente {
         background: white;
         height: 100px;
+        width: 250px;
         display: inline-block;
         padding: 10px 20px;
         text-align: center;
@@ -66,8 +129,13 @@
         float: left;
 
         img {
-          max-height: 80px;
-          max-width: 210px;
+          max-height: 60px;
+          max-width: 180px;
+          position: inherit;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
         }
 
         &:before {
@@ -107,11 +175,11 @@
             font-size: 20px;
 
             &#versao {
-              max-width: 175px
+              max-width: 200px
             }
 
             &#tela {
-              max-width: 275px;
+              max-width: 250px;
             }
           }
         }
@@ -134,7 +202,7 @@
             margin-left: 20px;
           }
 
-          &:hover {
+          &:hover, &:focus, &.active {
             [class^="icone-"], [class*="icone-"] {
               color: $corAmarelo;
             }

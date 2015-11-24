@@ -23,6 +23,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icone-minimizar:before {
+  content: "\e903";
+}
+.icone-maximizar:before {
+  content: "\e904";
+}
 .icone-desktop:before {
   content: "\e900";
 }

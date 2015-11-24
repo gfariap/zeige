@@ -7478,10 +7478,44 @@ input.form-control, textarea.form-control, select.form-control {
 .pagina-externa {
   height: 100%; }
   .pagina-externa .preview {
-    background-image: url("../img/background_preview.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100%; }
+    background: #f1efef;
+    position: absolute;
+    top: 0;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    overflow-y: auto; }
+    .pagina-externa .preview.tablet, .pagina-externa .preview.mobile {
+      background-image: url("../img/background_preview.jpg");
+      background-position: center;
+      background-repeat: no-repeat; }
+    .pagina-externa .preview.desktop .imagem-full img {
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.4); }
+    .pagina-externa .preview.tablet .frame {
+      width: 887px;
+      height: 1249px;
+      background-image: url("../img/tablet.png");
+      background-position: center;
+      background-repeat: no-repeat; }
+    .pagina-externa .preview.mobile .frame {
+      width: 381px;
+      height: 745px;
+      background-image: url("../img/mobile.png");
+      background-position: center;
+      background-repeat: no-repeat; }
+    .pagina-externa .preview .imagem-full {
+      display: none;
+      margin-top: 0; }
+      .pagina-externa .preview .imagem-full .container-marcadores {
+        cursor: auto; }
+        .pagina-externa .preview .imagem-full .container-marcadores .popover {
+          background: #fec70e; }
+          .pagina-externa .preview .imagem-full .container-marcadores .popover .arrow {
+            border-bottom-color: rgba(0, 0, 0, 0.37); }
+            .pagina-externa .preview .imagem-full .container-marcadores .popover .arrow::after {
+              border-bottom-color: #fec70e; }
+    .pagina-externa .preview.com-imagem .imagem-full {
+      display: block; }
   .pagina-externa .rodape {
     position: fixed;
     bottom: 0;
@@ -7525,14 +7559,19 @@ input.form-control, textarea.form-control, select.form-control {
       .pagina-externa .rodape .info .cliente {
         background: white;
         height: 100px;
+        width: 250px;
         display: inline-block;
         padding: 10px 20px;
         text-align: center;
         position: relative;
         float: left; }
         .pagina-externa .rodape .info .cliente img {
-          max-height: 80px;
-          max-width: 210px; }
+          max-height: 60px;
+          max-width: 180px;
+          position: inherit;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); }
         .pagina-externa .rodape .info .cliente:before {
           border: solid transparent;
           content: ' ';
@@ -7560,9 +7599,9 @@ input.form-control, textarea.form-control, select.form-control {
           height: 45px;
           font-size: 20px; }
           .pagina-externa .rodape .info .telas .form-group select.form-control#versao {
-            max-width: 175px; }
+            max-width: 200px; }
           .pagina-externa .rodape .info .telas .form-group select.form-control#tela {
-            max-width: 275px; }
+            max-width: 250px; }
       .pagina-externa .rodape .info .dispositivos {
         float: right;
         height: 100px;
@@ -7574,7 +7613,7 @@ input.form-control, textarea.form-control, select.form-control {
             color: white; }
           .pagina-externa .rodape .info .dispositivos a:not(:first-child) {
             margin-left: 20px; }
-          .pagina-externa .rodape .info .dispositivos a:hover [class^="icone-"], .pagina-externa .rodape .info .dispositivos a:hover [class*="icone-"] {
+          .pagina-externa .rodape .info .dispositivos a:hover [class^="icone-"], .pagina-externa .rodape .info .dispositivos a:hover [class*="icone-"], .pagina-externa .rodape .info .dispositivos a:focus [class^="icone-"], .pagina-externa .rodape .info .dispositivos a:focus [class*="icone-"], .pagina-externa .rodape .info .dispositivos a.active [class^="icone-"], .pagina-externa .rodape .info .dispositivos a.active [class*="icone-"] {
             color: #fec70e; }
 
 .login-user {
@@ -7638,6 +7677,12 @@ input.form-control, textarea.form-control, select.form-control {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icone-minimizar:before {
+  content: "\e903"; }
+
+.icone-maximizar:before {
+  content: "\e904"; }
 
 .icone-desktop:before {
   content: "\e900"; }
@@ -7717,7 +7762,7 @@ input.form-control, textarea.form-control, select.form-control {
       bottom: 0;
       margin: auto;
       max-height: 140px;
-      max-width: 200px; }
+      max-width: 180px; }
     .card-projeto .imagem .overlay {
       background: white;
       opacity: .4;

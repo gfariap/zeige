@@ -24,8 +24,15 @@
 <![endif]-->
 
 <div class="pagina-externa" id="pagina-externa" principal="{{ $principal }}" codigo="{{ $projeto->codigo }}">
-    <div class="preview">
-
+    <div class="preview" v-class="com-imagem: atual != null, desktop: dispositivo == 'desktop', tablet: dispositivo == 'tablet', mobile: dispositivo == 'mobile'">
+        <div class="frame">
+            <div class="imagem-full">
+                <img v-attr="src: '/img/telas/' + atual.imagem"/>
+                <div class="container container-marcadores">
+                    <div class="marcador" v-repeat="marcador in atual.marcadores" v-style="top: marcador.y + 'px', left: marcador.x + 'px'" data-toggle="popover" data-content="@{{ marcador.descricao }}">+</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="rodape">
@@ -42,25 +49,27 @@
                 <div class="telas form-inline">
                     <div class="form-group">
                         <label for="versao">Versão:</label>
-                        <select name="versao" id="versao" class="form-control" v-on="change: buscarTelas($(this).val())">
+                        <select name="versao" id="versao" class="form-control" v-model="apresentacao" options="apresentacoes" v-on="change: buscarTelas(apresentacao)">
+                            <option value="0">Selecione a versão<option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="tela">Tela:</label>
-                        <select name="tela" id="tela" class="form-control" v-on="change: telaAtual($(this).val())">
+                        <select name="tela" id="tela" class="form-control" v-model="tela" options="telas" v-on="change: telaAtual(tela)">
+                            <option value="0">Selecione a tela</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="dispositivos">
                     @if ($projeto->desktop()->count())
-                        <a href="#" title="Desktop" v-on="click: buscarApresentacoes('desktop')"><i class="icone-desktop"></i></a>
+                        <a href="#" title="Desktop" v-class="active: dispositivo == 'desktop'" v-on="click: buscarApresentacoes('desktop')"><i class="icone-desktop"></i></a>
                     @endif
                     @if ($projeto->tablet()->count())
-                        <a href="#" title="Tablet" v-on="click: buscarApresentacoes('tablet')"><i class="icone-tablet"></i></a>
+                        <a href="#" title="Tablet" v-class="active: dispositivo == 'tablet'" v-on="click: buscarApresentacoes('tablet')"><i class="icone-tablet"></i></a>
                     @endif
                     @if ($projeto->mobile()->count())
-                        <a href="#" title="Mobile" v-on="click: buscarApresentacoes('mobile')"><i class="icone-mobile"></i></a>
+                        <a href="#" title="Mobile" v-class="active: dispositivo == 'mobile'" v-on="click: buscarApresentacoes('mobile')"><i class="icone-mobile"></i></a>
                     @endif
                 </div>
             </div>

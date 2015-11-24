@@ -12,6 +12,10 @@
         <i class="icone-editar"></i>
         Editar Projeto
     </a>
+    <a href="{{ route('externo', ['codigo' => $projeto->codigo]) }}" class="btn btn-acao">
+        <i class="icone-preview"></i>
+        Preview
+    </a>
 @endsection
 
 @section ('content')

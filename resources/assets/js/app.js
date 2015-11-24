@@ -17,6 +17,11 @@ $(document).ready(function(){
         $("#form-"+$(this).attr('id')).submit();
     });
 
+    $('body').popover({
+        selector: '[data-toggle="popover"]',
+        placement: 'bottom'
+    });
+
     $('.dropzone-single').dropzone({
         uploadMultiple: true,
         parallelUploads: 100,
@@ -35,7 +40,6 @@ $(document).ready(function(){
     });
 
     $('#dropzone-telas').dropzone({
-
         autoProcessQueue: false,
         uploadMultiple: true,
         parallelUploads: 100,
@@ -186,22 +190,31 @@ $(document).ready(function(){
             },
             methods: {
                 buscarApresentacoes: function (dispositivo) {
+                    var that = this;
                     this.$http.get(this.codigo+'/apresentacoes/'+dispositivo, function(apresentacoes) {
-                        this.$set('apresentacoes', apresentacoes);
-                        $('#apresentacoes').change();
+                        that.$set('apresentacoes', apresentacoes);
+                        that.$set('apresentacao', null);
+                        that.$set('telas', []);
+                        that.$set('tela', null);
+                        that.$set('atual', null);
                     });
                     this.$set('dispositivo', dispositivo);
                 },
                 buscarTelas: function (apresentacao) {
+                    var that = this;
                     this.$http.get(this.codigo+'/apresentacoes/'+apresentacao+'/telas', function(telas) {
-                        this.$set('telas', telas);
-                        $('#telas').change();
+                        that.$set('telas', telas);
+                        that.$set('tela', null);
+                        that.$set('atual', null);
                     });
                 },
                 telaAtual: function (tela) {
                     for(var i = 0; i < this.telas.length; i++) {
-                        if (this.telas[i].id == tela) {
-                            this.atual = this.telas[i];
+                        if (this.telas[i].value == tela) {
+                            var that = this;
+                            this.$http.get(this.codigo+'/apresentacoes/'+this.apresentacao+'/telas/'+tela, function(tela) {
+                                that.$set('atual', tela);
+                            });
                         }
                     }
                 }

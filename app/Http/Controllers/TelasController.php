@@ -146,6 +146,8 @@ class TelasController extends Controller
     {
         $apresentacao = Apresentacao::findOrFail($id);
 
+        $maiorPosicao = $apresentacao->telas()->withTrashed()->orderBy('ordem', 'desc')->first()->ordem;
+
         foreach ($request->file('file') as $index => $arquivo) {
             $nomeDoArquivo = $this->gerenciadorDeImagens->salvarTelaDeApresentacao($arquivo,
                 $index . $apresentacao->versao);
@@ -155,7 +157,7 @@ class TelasController extends Controller
             $tela->imagem          = $nomeDoArquivo;
             $tela->titulo          = $arquivo->getClientOriginalName();
             $tela->status          = 1;
-            $tela->ordem           = $index;
+            $tela->ordem           = $maiorPosicao + $index + 1;
             $tela->apresentacao_id = $apresentacao->id;
             $tela->save();
         }

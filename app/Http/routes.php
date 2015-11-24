@@ -67,4 +67,19 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
 });
 
-Route::get('{codigo}', [ 'as' => 'externo', 'uses' => 'ProjetosController@externo' ]);
+Route::get('{codigo}/apresentacoes/{id}/telas/{tela_id}', [
+    'as' => 'externo.tela',
+    'middleware' => 'ajax',
+    'uses' => 'ExternoController@tela'
+]);
+Route::get('{codigo}/apresentacoes/{id}/telas', [
+    'as' => 'externo.telas',
+    'middleware' => 'ajax',
+    'uses' => 'ExternoController@telas'
+]);
+Route::get('{codigo}/apresentacoes/{dispositivo}', [
+    'as' => 'externo.apresentacoes',
+    'middleware' => 'ajax',
+    'uses' => 'ExternoController@apresentacoes'
+]);
+Route::get('{codigo}', [ 'as' => 'externo', 'uses' => 'ExternoController@projeto' ]);

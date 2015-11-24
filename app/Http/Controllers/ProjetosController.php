@@ -145,7 +145,7 @@ class ProjetosController extends Controller
             $tela->imagem          = $nomeDoArquivo;
             $tela->titulo          = $arquivo->getClientOriginalName();
             $tela->status          = 1;
-            $tela->ordem           = $index;
+            $tela->ordem           = $index + 1;
             $tela->apresentacao_id = $apresentacao->id;
             $tela->save();
         }
@@ -215,31 +215,6 @@ class ProjetosController extends Controller
         $projeto->save();
 
         return response('Projeto ativado com sucesso!');
-    }
-
-
-    /**
-     * Exibe a página de visualização externa do projeto.
-     *
-     * @param $codigo
-     *
-     * @return \Illuminate\View\View
-     */
-    public function externo($codigo)
-    {
-        $projeto = Projeto::where('codigo', '=', $codigo)->firstOrFail();
-
-        if ($projeto->desktop()->count()) {
-            $principal = 'desktop';
-        } else if ($projeto->tablet()->count()) {
-            $principal = 'tablet';
-        } else if ($projeto->mobile()->count()) {
-            $principal = 'mobile';
-        } else {
-            abort(404);
-        }
-
-        return view('paginas.externo', compact('projeto', 'principal'));
     }
 
 }
