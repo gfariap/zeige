@@ -25,11 +25,13 @@
 
 <div class="pagina-externa" id="pagina-externa" principal="{{ $principal }}" codigo="{{ $projeto->codigo }}">
     <div class="preview" v-class="com-imagem: atual != null, desktop: dispositivo == 'desktop', tablet: dispositivo == 'tablet', mobile: dispositivo == 'mobile'">
-        <div class="frame">
-            <div class="imagem-full">
-                <img v-attr="src: '/img/telas/' + atual.imagem"/>
-                <div class="container container-marcadores">
-                    <div class="marcador" v-repeat="marcador in atual.marcadores" v-style="top: marcador.y + 'px', left: marcador.x + 'px'" data-toggle="popover" data-content="@{{ marcador.descricao }}">+</div>
+        <div class="imagem-full">
+            <div class="frame">
+                <div class="area-util">
+                    <img v-attr="src: '/img/telas/' + atual.imagem"/>
+                    <div class="container container-marcadores">
+                        <div class="marcador" v-repeat="marcador in atual.marcadores" v-style="top: marcador.y + 'px', left: marcador.x + 'px'" data-toggle="popover" data-container=".area-util" data-content="@{{ marcador.descricao }}">+</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,13 +40,25 @@
     <div class="rodape">
         <div class="container">
             <div class="marca">
-                <img src="{{ asset('img/logo.png') }}" alt="Zeige Resultate"/>
+                @if (\Auth::user())
+                    <a href="{{ route('projetos.listar') }}">
+                        <img src="{{ asset('img/logo.png') }}" alt="Zeige Resultate"/>
+                    </a>
+                @else
+                    <img src="{{ asset('img/logo.png') }}" alt="Zeige Resultate"/>
+                @endif
             </div>
 
             <div class="info">
-                <div class="cliente">
-                    <img src="{{ asset('img/logos/'.$projeto->imagem) }}" alt="{{ $projeto->cliente }}"/>
-                </div>
+                @if (\Auth::user())
+                    <a href="{{ route('projetos.dashboard', $projeto->id) }}" class="cliente">
+                        <img src="{{ asset('img/logos/'.$projeto->imagem) }}" alt="{{ $projeto->cliente }}"/>
+                    </a>
+                @else
+                    <div class="cliente">
+                        <img src="{{ asset('img/logos/'.$projeto->imagem) }}" alt="{{ $projeto->cliente }}"/>
+                    </div>
+                @endif
 
                 <div class="telas form-inline">
                     <div class="form-group">

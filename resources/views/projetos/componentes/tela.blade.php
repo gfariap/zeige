@@ -23,6 +23,6 @@
         <img src="/img/telas/@{{ tela.imagem }}"/>
     </div>
     <div class="nome">
-        @{{ tela.titulo }}
+        <a href="#" data-name="titulo" data-type="text" data-pk="@{{ tela.id }}" data-title="Informe o título da tela" class="titulo-tela editable editable-click">@{{ tela.titulo }}</a>
     </div>
 </div>

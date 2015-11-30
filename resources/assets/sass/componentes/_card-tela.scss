@@ -72,6 +72,52 @@
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: break-all;
+
+    .titulo-tela {
+      border-bottom: none;
+      color: inherit;
+      display: block;
+    }
+
+    .editable-container {
+      width: 100%;
+
+      .editableform {
+        width: 100%;
+        position: relative;
+        height: 30px;
+      }
+
+      .editable-input {
+        position: absolute !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        height: 30px;
+        border-bottom: 1px solid;
+
+        input.form-control {
+          background: none;
+          border: none;
+          padding: 0 !important;
+          margin: 0;
+          box-shadow: none;
+          width: 100%;
+          padding-right: 63px !important;
+          height: 25px;
+        }
+        .editable-clear-x {
+          display: none !important;
+        }
+      }
+      .editable-buttons {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+      }
+    }
   }
 
   &.inativo {

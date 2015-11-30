@@ -9,7 +9,7 @@
 @endsection
 
 @section ('content')
-    <div id="lista-marcadores" tela="{{ $tela->id }}">
+    <div id="lista-marcadores" class="{{ strtolower($tela->apresentacao->dispositivo) }}" tela="{{ $tela->id }}">
         <h1 class="titulo"><strong>{{ $tela->apresentacao->dispositivo }}</strong> / {{ $tela->apresentacao->versao }} / <small>{{ $tela->titulo }}</small></h1>
         <div class="checkbox checkbox-action pull-right">
             <label>

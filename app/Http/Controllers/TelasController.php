@@ -193,6 +193,26 @@ class TelasController extends Controller
 
 
     /**
+     * Função para atualizar o título da tela.
+     *
+     * @param Request $request
+     */
+    public function titulo(Request $request)
+    {
+        $dados = $request->all();
+        if ($dados['pk'] == '0') {
+            $tela = new Tela;
+        } else {
+            $tela = Tela::findOrFail($dados['pk']);
+        }
+        $tela->titulo = $dados['value'];
+        $tela->save();
+
+        return $tela;
+    }
+
+
+    /**
      * Função para excluir marcadores da tela
      *
      * @param Request $request

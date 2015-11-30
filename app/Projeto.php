@@ -60,45 +60,33 @@ class Projeto extends \Eloquent
     /**
      * Filtra apenas as apresentações desktop do projeto.
      *
-     * @param $query
-     *
      * @return mixed
      */
-    public function scopeDesktop($query)
+    public function scopeDesktop()
     {
-        return $query->whereHas('apresentacoes', function ($query) {
-            $query->desktop();
-        });
+        return $this->apresentacoes()->desktop();
     }
 
 
     /**
      * Filtra apenas as apresentações tablet do projeto.
      *
-     * @param $query
-     *
      * @return mixed
      */
-    public function scopeTablet($query)
+    public function tablet()
     {
-        return $query->whereHas('apresentacoes', function ($query) {
-            $query->tablet();
-        });
+        return $this->apresentacoes()->tablet();
     }
 
 
     /**
      * Filtra apenas as apresentações mobile do projeto.
      *
-     * @param $query
-     *
      * @return mixed
      */
-    public function scopeMobile($query)
+    public function mobile()
     {
-        return $query->whereHas('apresentacoes', function ($query) {
-            $query->mobile();
-        });
+        return $this->apresentacoes()->mobile();
     }
 
 

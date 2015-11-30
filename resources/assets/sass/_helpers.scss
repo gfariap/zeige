@@ -26,12 +26,29 @@
   padding: 13px 15px;
   @include button-variant($corBranco, $corPreto, $corPreto);
   border: 0;
+  float: left;
 
   [class^="icone-"], [class*=" icone-"] {
     font-size: 24px;
     margin-right: 10px;
     float: left;
     vertical-align: middle;
+    color: $corAmarelo;
+  }
+
+  &:nth-child(even) {
+    @include button-variant($corBranco, $corCinza, $corCinza);
+  }
+}
+
+.btn-editable {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.75em;
+
+  &.editable-submit {
     color: $corAmarelo;
   }
 }

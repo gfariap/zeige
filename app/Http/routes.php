@@ -47,6 +47,8 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::group([ 'prefix' => 'telas', 'as' => 'telas.' ], function () {
         Route::get('{projeto_id}/buscar',
             [ 'as' => 'buscar', 'middleware' => 'ajax', 'uses' => 'TelasController@buscar' ]);
+        Route::patch('titulos',
+            [ 'as' => 'titulo', 'middleware' => 'ajax', 'uses' => 'TelasController@titulo' ]);
         Route::get('{id}', [ 'as' => 'tela', 'uses' => 'TelasController@tela' ]);
         Route::post('{id}/marcadores',
             [ 'as' => 'marcador', 'middleware' => 'ajax', 'uses' => 'TelasController@marcador' ]);

@@ -19,6 +19,7 @@ elixir(function (mix) {
         '../../../node_modules/sweetalert/dist/sweetalert.min.js',
         '../../../node_modules/dropzone/dist/min/dropzone.min.js',
         '../../../node_modules/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js',
+        '../../../node_modules/perfect-scrollbar/dist/js/min/perfect-scrollbar.jquery.min.js',
         '../../../node_modules/vue/dist/vue.min.js',
         '../../../node_modules/vue-resource/dist/vue-resource.min.js',
         'app.js'

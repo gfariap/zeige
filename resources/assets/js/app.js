@@ -22,6 +22,11 @@ $(document).ready(function(){
         placement: 'bottom'
     });
 
+    $('.area-util').perfectScrollbar({
+        suppressScrollX: true,
+        wheelPropagation: true
+    });
+
     $('.dropzone-single').dropzone({
         uploadMultiple: true,
         parallelUploads: 100,
@@ -129,6 +134,20 @@ $(document).ready(function(){
             props: ['projeto'],
             ready: function() {
                 this.buscarTelas();
+                $.fn.editableform.template = '<form class="form-inline editableform"><div class="editable-input control-group"></div><div class="editable-buttons"></div><div class="editable-error-block"></div></form>';
+                $.fn.editableform.buttons = '<button type="submit" class="btn-editable editable-submit"><i class="icone-ok"></i></button><button type="button" class="btn-editable editable-cancel"><i class="icone-deletar"></i></button>';
+                $('#lista-telas').editable({
+                    selector: '.titulo-tela',
+                    mode: 'inline',
+                    autotext: 'always',
+                    url: '/telas/titulos',
+                    ajaxOptions: {
+                        'headers' : {
+                            'X-CSRF-TOKEN': document.querySelector('#token').getAttribute('value')
+                        },
+                        'type': 'PATCH'
+                    }
+                });
             },
             data: {
                 ativo: 1,
